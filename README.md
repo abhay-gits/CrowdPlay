@@ -7,6 +7,7 @@ Features
 Vote on Songs: Users can upvote their favorite songs. The song with the most votes will play next.
 Real-time Chat: A real-time chat feature enables users to interact with one another while listening to music.
 Live Song Updates: Songs and votes are updated live as users engage with the app.
+
 Tech Stack
 Frontend: React, Vite
 Backend: Node.js, Express.js
