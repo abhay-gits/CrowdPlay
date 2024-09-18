@@ -1,4 +1,5 @@
 import { deleteSong, getSongs, upVoteSong } from "../redis/songService.redis.js";
+import { chatSocket } from "./chat.socket.js";
 
 export const setupSocket = (io)=>{
     io.on('connection',async (socket)=>{
@@ -47,7 +48,8 @@ export const setupSocket = (io)=>{
                 console.error("error in upvoting",error)
             }
         })
-    
+        /* Chat Soxket */
+        chatSocket(socket,io);
         /* Disconnection Handling */
         socket.on('disconnect',()=>{
             console.log("A user Disconnected");

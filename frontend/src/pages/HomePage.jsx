@@ -17,12 +17,12 @@ export const HomePage = ({ user, setUser }) => {
       <div className='p-6 flex justify-between'>  
         <div>
           <YoutubePlayer/>
-          <TopSongs />
-        </div>
-        <div>
           <MusicCard videoInfo={videoInfo}/>
         </div>
-        <ChatBox/>
+        <div>
+          <TopSongs />
+        </div>
+        <ChatBox userName={user.displayName}/>
       </div>
     </div>
   )

@@ -6,14 +6,18 @@ export const TopSongs = () => {
   console.log(songName)
   useEffect(() => {
     socket.emit('initialFetch');
-    socket.on('updateTopSongs', (songList) => {
-      setSongName(songList)
-    })
+   const handleTopSongs = (songList)=>{
+    setSongName(songList);
+   }
+   socket.on('updateTopSongs',handleTopSongs)
+    return ()=>{
+      socket.off('updateTopSongs',handleTopSongs)
+    }
   }, [])
   return (
-    <div>
+    <div className='h-3/4 border border-black overflow-y-scroll'>
         <h1>Upcoming Songs</h1>
-      <div className="overflow-x-auto overflow-y-auto h-60 ">
+      <div className="overflow-y-hidden">
         <table className="table">
           {/* head */}
           <thead>
@@ -51,8 +55,7 @@ export const TopSongs = () => {
                 </div>
               </td>
               <td>
-                {song.name}
-                
+                {song.name}               
               </td>
               <td>{song.score}</td>
             </tr>

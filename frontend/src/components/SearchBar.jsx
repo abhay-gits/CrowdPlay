@@ -22,12 +22,6 @@ export const SearchBar = ({setVideoInfo}) => {
         setVideoInfo(data)
     }
 
-    const handleUpvote = (video) => {
-        const id = video.videoId;
-        const name = video.name;
-        socket.emit('upvote', { id, name })
-    };
-
     return (
         <div className="form-control">
             <label className="input input-bordered flex items-center gap-2">

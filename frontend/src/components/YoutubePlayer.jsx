@@ -21,7 +21,13 @@ export const YoutubePlayer = () => {
         videoId: songId,
         playerVars: {
           autoplay: 0,
-          controls: 1,
+          controls: 0,
+          rel: 0,
+          modestbranding: 1, 
+          iv_load_policy: 3,
+          disablekb:1,
+          fs:0,
+          iv_load_policy:3,
         },
         events: {
           onReady: onPlayerReady,
@@ -71,7 +77,10 @@ export const YoutubePlayer = () => {
 
   return (
     <div>
-        <div id='player' className='z-0'></div>
+        <div className="relative w-full h-full">
+          <div id="player" className='w-full h-full'></div>
+            <div id="overlays" className="absolute top-0 left-0 w-full h-full bg-transparent z-10"></div>
+        </div>
         <input 
         type="range" 
         min={0} 

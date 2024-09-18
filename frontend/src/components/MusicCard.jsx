@@ -12,8 +12,8 @@ export const MusicCard = ({videoInfo}) => {
   return (
     <div>
         {videoInfo && (
-        <div className="card bg-base-100 w-96 shadow-xl" key={videoInfo.videoId}>
-          <figure className="px-10 pt-10">
+        <div className="card bg-base-100 w-96 h-64 shadow-xl" key={videoInfo.videoId}>
+          <figure className="px-10 pt-7">
             <img
               src={videoInfo.thumbnails[1].url}
               alt="album"
