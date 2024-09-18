@@ -18,12 +18,9 @@ export const addNewSong = async (songId)=>{
 /* Increment vote count */
 
 export const upVoteSong = async (song) => {
-    console.log("STARTED UPVOTING....");
     try {
         const newVoteCount = await redisClient.zIncrBy(SONG_VOTES_KEY, 1, song.id);
         await redisClient.hSet(SONG_NAME_KEY,song.id,song.name);
-
-        console.log("UPVOTED HOORAY");
         return newVoteCount;
     } catch (err) {
         console.error("Error in upvoting:", err);
@@ -38,16 +35,18 @@ export const getSongs = async (topN = -1)=>{
     try {
         const songWithScore = await redisClient.zRangeWithScores(SONG_VOTES_KEY, 0, topN, { REV: true});
         const songIds = songWithScore.map(song => song.value);  
-        const songName = await redisClient.hmGet(SONG_NAME_KEY,songIds);
-        const response = songWithScore.map((song,index)=>({
-            Id: song.value,
-            score: song.score,
-            name: songName[index],
-        }));
-        return response;
+        if(songIds.length != 0){
+            const songName = await redisClient.hmGet(SONG_NAME_KEY,songIds);
+            const response = songWithScore.map((song,index)=>({
+                Id: song.value,
+                score: song.score,
+                name: songName[index],
+            }));
+            return response;
+        }else return null;
 
     } catch (err) {
-        console.error("Error getting songs:", err);
+        console.error("Error in songService get Songs:", err);
         throw err;
     }
 }

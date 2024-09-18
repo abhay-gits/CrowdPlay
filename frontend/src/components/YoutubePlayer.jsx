@@ -62,8 +62,6 @@ export const YoutubePlayer = () => {
     
   const handleVolumeChange = (event) => {
     const newVolume = event.target.value;
-    const currentVideoInfo = playerRef.current.getVideoData();
-    console.log(currentVideoInfo.video_id);
     
     setVolume(newVolume); // Update the volume state
     if (playerRef.current) {
@@ -80,7 +78,7 @@ export const YoutubePlayer = () => {
         max="100" 
         value={volume} 
         onChange={handleVolumeChange} 
-        className="range range-primary w-96" />
+        className="range range-primary w-96 h-1" />
     </div>
   )
 }

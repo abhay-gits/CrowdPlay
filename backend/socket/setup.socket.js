@@ -4,16 +4,16 @@ export const setupSocket = (io)=>{
     io.on('connection',async (socket)=>{
         console.log("A User Connected");
         /* Initial list of songs */
+        socket.on('initialFetch',async()=>{
         try {
             const initialFetch = await getSongs();
             const parsedSongs = JSON.parse(JSON.stringify(initialFetch));
-            console.log(parsedSongs);   
-            socket.emit('updateTopSongs', parsedSongs)
-           
+            console.log("Top somgs :::",parsedSongs);   
+            socket.emit('updateTopSongs', parsedSongs)   
         } catch (error) {
             console.error("Error fetching initial top songs", error);
         }
-    
+    })
         /* Fetch Songs */
         socket.on('getSongs',async()=>{
             try {

@@ -1,19 +1,26 @@
-import React from 'react'
+import React from 'react';
+import socket from '../utils/socket.js';
 
-export const MusicCard = () => {
+export const MusicCard = ({videoInfo}) => {
+
+  const handleUpvote = (video) => {
+    const id = video.videoId;
+    const name = video.name;
+    socket.emit('upvote', {id,name})
+  };
+
   return (
     <div>
-        {/* {videoInfo && ( */}
-        <div className="card bg-base-100 w-96 shadow-xl" /* key={videoInfo.videoId} */>
+        {videoInfo && (
+        <div className="card bg-base-100 w-96 shadow-xl" key={videoInfo.videoId}>
           <figure className="px-10 pt-10">
             <img
-              /* src={videoInfo.thumbnails[1].url} */
-              src='https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp'
-              alt="Shoes"
+              src={videoInfo.thumbnails[1].url}
+              alt="album"
               className="rounded-xl" />
           </figure>
           <div className="card-body items-center text-center">
-            <h2 className="card-title">{/* {videoInfo.name} */}</h2>
+            <h2 className="card-title">{videoInfo.name}</h2>
             <div className="card-actions">
               <button className="btn" onClick={()=>handleUpvote(videoInfo)}>
                 <svg
@@ -32,7 +39,7 @@ export const MusicCard = () => {
             </div>
           </div>
         </div>
-      {/* )} */}
+        )}
     </div>
 )
 }

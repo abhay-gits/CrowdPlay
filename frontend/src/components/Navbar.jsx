@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-export const Navbar = ({setUser,userImage,userName}) => {
+import { SearchBar } from './SearchBar';
+export const Navbar = ({setUser,userImage,userName,setVideoInfo}) => {
   console.log(userImage);
   
     const navigate = useNavigate();
@@ -20,9 +21,7 @@ export const Navbar = ({setUser,userImage,userName}) => {
     <a className="text-3xl font-semibold pl-5">Musix</a>
   </div>
   <div className="flex-none gap-5">
-    <div className="form-control">
-      <input type="text" placeholder="Search Music" className="input input-bordered w-24 md:w-64 h-10 rounded-xl" />
-    </div>
+    <SearchBar setVideoInfo={setVideoInfo}/>
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
