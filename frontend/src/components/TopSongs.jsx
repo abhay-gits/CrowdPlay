@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import socket from '../utils/socket';
-import album from '../../public/Designer.svg'
+import album from '/Designer.svg'
 export const TopSongs = () => {
   const [songName, setSongName] = useState([]);
-  console.log(songName)
   useEffect(() => {
     socket.emit('initialFetch');
    const handleTopSongs = (songList)=>{
@@ -15,22 +14,16 @@ export const TopSongs = () => {
     }
   }, [])
   return (
-    <div className='h-3/4 border border-black overflow-y-scroll'>
-        <h1>Upcoming Songs</h1>
+    <div className='h-5/6 border overflow-y-auto w-full rounded-md shadow-sm p-4 bg-white'>
+        <h1 className='text-2xl font-medium mb-3'>Top Songs</h1>
       <div className="overflow-y-hidden">
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
-              {/* <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th> */}
+            <tr className='text-sm'>
               <th>Album</th>
               <th>Song</th>
               <th>Votes</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -38,11 +31,6 @@ export const TopSongs = () => {
             {
             songName?.map((song,index) =>(
             <tr key={index}>
-              {/* <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th> */}
               <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">

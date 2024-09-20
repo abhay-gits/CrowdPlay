@@ -14,12 +14,12 @@ export const HomePage = ({ user, setUser }) => {
       userName={user.displayName} 
       userImage={user.photos[0].value} 
       setVideoInfo={setVideoInfo}/>
-      <div className='p-6 flex justify-between'>  
-        <div>
+      <div className='p-6 flex justify-between w-screen h-screen gap-6 bg-gray-100'>  
+        <div className='w-1/3'>
           <YoutubePlayer/>
           <MusicCard videoInfo={videoInfo}/>
         </div>
-        <div>
+        <div className='w-1/3'>
           <TopSongs />
         </div>
         <ChatBox userName={user.displayName}/>

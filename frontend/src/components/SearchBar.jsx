@@ -24,8 +24,8 @@ export const SearchBar = ({setVideoInfo}) => {
 
     return (
         <div className="form-control">
-            <label className="input input-bordered flex items-center gap-2">
-                <input type="text" className="grow w-24 md:w-64 h-10 rounded-xl text-gray-900" placeholder="Search Music" id='input'/>
+            <label className="input input-bordered flex items-center gap-2 rounded-full">
+                <input type="text" className="grow w-24 md:w-64 h-10 rounded text-gray-900" placeholder="Search Music" id='input'/>
                 <svg onClick={() => HandleSearch()}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
