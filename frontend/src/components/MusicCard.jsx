@@ -1,12 +1,14 @@
 import React from 'react';
 import socket from '../utils/socket.js';
 
-export const MusicCard = ({videoInfo}) => {
+export const MusicCard = ({videoInfo,userId}) => {
 
   const handleUpvote = (video) => {
     const id = video.videoId;
     const name = video.name;
-    socket.emit('upvote', {id,name})
+    const mail = userId;
+    
+    socket.emit('upvote', {id,name,mail})
   };
 
   return (

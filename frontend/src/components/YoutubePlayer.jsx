@@ -21,7 +21,7 @@ export const YoutubePlayer = () => {
         videoId: songId,
         playerVars: {
           autoplay: 0,
-          controls: 1,
+          controls: 0,
           rel: 0,
           modestbranding: 1, 
           iv_load_policy: 3,
@@ -69,9 +69,9 @@ export const YoutubePlayer = () => {
   const handleVolumeChange = (event) => {
     const newVolume = event.target.value;
     
-    setVolume(newVolume); // Update the volume state
+    setVolume(newVolume);
     if (playerRef.current) {
-      playerRef.current.setVolume(newVolume); // Set the YouTube player volume
+      playerRef.current.setVolume(newVolume); 
     }
   };
 
@@ -79,7 +79,7 @@ export const YoutubePlayer = () => {
     <div>
         <div className="relative w-full h-full">
           <div id="player" className='w-full h-48 rounded'></div>
-            {/* <div id="overlays" className="absolute top-0 left-0 w-full h-full bg-transparent z-10"></div> */}
+            <div id="overlays" className="absolute top-0 left-0 w-full h-full bg-transparent z-10"></div>
         </div>
         <input 
         type="range" 

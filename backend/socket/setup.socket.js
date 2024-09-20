@@ -41,7 +41,6 @@ export const setupSocket = (io)=>{
             try {
                 await upVoteSong(song);  // Upvote the song in Redis
                 const topSongs = await getSongs();  // Fetch updated song list
-                console.log("Updated Songs:", topSongs);
                 
                 io.emit('updateTopSongs', topSongs); 
             } catch (error) {

@@ -6,7 +6,6 @@ import cors from "cors";
 import { Server } from "socket.io";
 import { fileURLToPath } from 'url';
 
-
 import videoRoute from "./routes/getVideo.route.js";
 import authRoutes from "./routes/auth.route.js"
 import { initializeAuth } from "./auth/auth.js";

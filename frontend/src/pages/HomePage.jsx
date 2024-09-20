@@ -6,6 +6,7 @@ import { MusicCard } from '../components/MusicCard';
 import { ChatBox } from '../components/ChatBox';
 
 export const HomePage = ({ user, setUser }) => {
+  
   const [videoInfo, setVideoInfo] = useState("");
   return (
     <div>
@@ -17,10 +18,10 @@ export const HomePage = ({ user, setUser }) => {
       <div className='p-6 flex justify-between w-screen h-screen gap-6 bg-gray-100'>  
         <div className='w-1/3'>
           <YoutubePlayer/>
-          <MusicCard videoInfo={videoInfo}/>
+          <MusicCard videoInfo={videoInfo} userId={user.id}/>
         </div>
         <div className='w-1/3'>
-          <TopSongs />
+          <TopSongs userId={user.id}/>
         </div>
         <ChatBox userName={user.displayName}/>
       </div>
