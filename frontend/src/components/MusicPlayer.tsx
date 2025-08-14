@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import socket from "../socket/socket";
-import axios from "axios";
+import axios from "../api/axios";
 import playButton from "../assets/play.svg";
 import pauseButton from "../assets/pause.svg";
 
@@ -42,7 +42,7 @@ const MusicPlayer: React.FC = () => {
         videoId: songId,
         playerVars: {
           autoplay: 1,
-          controls: 1,
+          controls: 0,
         },
         events: {
           onReady: onPlayerReady,
@@ -55,8 +55,6 @@ const MusicPlayer: React.FC = () => {
   useEffect(() => {
     if (playerRef.current && playerRef.current.loadVideoById) {
       playerRef.current.loadVideoById(songId);
-      playerRef.current.mute();     
-    playerRef.current.playVideo();
     }
   }, [songId]);
 
@@ -92,9 +90,7 @@ const MusicPlayer: React.FC = () => {
 
   const handleSearch = async (firstSong: any) => {
     console.log("Searching for song:", firstSong.name);
-    const response = await axios.get(
-      `http://localhost:3000/api/video/info/${firstSong.name}`
-    );
+    const response = await axios.get(`/video/info/${firstSong.name}`);
     setSongDetails(response.data);
   };
 

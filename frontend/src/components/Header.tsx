@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/authContext/index';
-import axios from 'axios';
+import axios from '../api/axios';
 import { signOut } from '../firebase/auth'
+import logo from '../assets/logo.svg';
 
 interface songInfo  {
   name: string;
@@ -21,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ setSongInfo }) => {
   const { currentUser } = useAuth(); 
 
   const handleSearch = async () => {
-    const response = await axios.get(`http://localhost:3000/api/video/info/${searchValue}`);
+    const response = await axios.get(`/video/info/${searchValue}`);
     console.log(response.data);
     setSongInfo(response.data);
     setSearchValue('');   
@@ -41,15 +42,10 @@ const Header: React.FC<HeaderProps> = ({ setSongInfo }) => {
     <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#283039] px-10 py-3">
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-4 text-white">
-          <div className="size-4">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"
-                fill="currentColor"
-              />
-            </svg>
+          <div>
+            <img src={logo} alt="CrowdPlay Logo" className="w-full h-full object-contain" />
           </div>
-          <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Musix</h2>
+          <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CrowdPlay</h2>
         </div>
       </div>
       <div className="flex flex-1 justify-end gap-4">

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { signInWithGoogle } from '../firebase/auth'
 import { useAuth } from '../contexts/authContext/index.tsx';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.svg';
 
 const LandingPage: React.FC = () => {
 
@@ -46,15 +47,10 @@ const navigate = useNavigate();
         {/* Header */}
         <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#283039] px-4 sm:px-10 py-3">
           <div className="flex items-center gap-4 text-white">
-            <div className="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"
-                  fill="currentColor"
-                />
-              </svg>
+            <div>
+              <img src={logo} alt="CrowdPlay Logo"/>
             </div>
-            <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Musix</h2>
+            <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CrowdPlay</h2>
           </div>
           <div className="flex flex-1 justify-end gap-4 sm:gap-8">
             <div className="hidden sm:flex items-center gap-9">
@@ -68,7 +64,7 @@ const navigate = useNavigate();
                 Contact
               </a>
             </div>
-            <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#3d98f4] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+            <button className="flex min-w-[60px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-2 bg-[#3d98f4] text-white text-sm font-bold leading-normal tracking-[0.015em]"
               onClick={handleSignIn}>
               <span className="truncate">Get Started</span>
             </button>
@@ -90,7 +86,7 @@ const navigate = useNavigate();
                     Vote for your favorite songs
                   </h1>
                   <h2 className="text-white text-sm sm:text-base font-normal leading-normal">
-                    Musix is a music voting application where users select songs, vote for their favorites, and the song with the most votes plays. Join the community and shape
+                    CrowdPlay is a music voting application where users select songs, vote for their favorites, and the song with the most votes plays. Join the community and shape
                     the soundtrack of your day!
                   </h2>
                 </div>
@@ -111,7 +107,7 @@ const navigate = useNavigate();
                   Simple steps to enjoy music together
                 </h1>
                 <p className="text-white text-base font-normal leading-normal max-w-[720px]">
-                  Musix makes it easy to create a shared music experience. Here's how you can get started:
+                  CrowdPlay makes it easy to create a shared music experience. Here's how you can get started:
                 </p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-0">

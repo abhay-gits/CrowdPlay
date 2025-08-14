@@ -1,11 +1,10 @@
 import express from "express";
 import http from "http";
-import path from "path";
 import cors from "cors";
 import { Server } from "socket.io";
 import "dotenv/config";
-import { connectRedis } from "./redis/connectionToRedis.js";
 
+import { connectRedis } from "./redis/connectionToRedis.js";
 import videoRoute from "./routes/getVideo.route.js";
 import { setupSocket } from "./socket/setup.socket.js";
 
@@ -13,17 +12,16 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
     methods: ["GET", "POST"],
   },
 });
 const port = process.env.PORT || 3000;
 
-
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
     credentials: true,
   })
 );
