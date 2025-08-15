@@ -51,7 +51,7 @@ const Chat: React.FC = () => {
 
 
   return (
-    <div className="layout-content-container flex flex-col w-[360px] h-[450px] bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+    <div className="layout-content-container flex flex-col w-[360px] h-[70vh] bg-gray-800 rounded-xl shadow-lg overflow-hidden">
       <h2 className="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-2">
         Chat
       </h2>

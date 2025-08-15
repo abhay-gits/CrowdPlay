@@ -26,8 +26,8 @@ const Dashboard: React.FC = () => {
         
         {/* Left column - Music Player and Search Card */}
         <div className="flex flex-col w-full lg:max-w-[920px] lg:flex-1 order-2 lg:order-1">
-        <SongList />
                   {songInfo && <SearchCard songInfo={songInfo} />}
+        <SongList />
         </div>
         
         {/* Right column - Chat (sidebar on desktop, top on mobile) */}
@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
       </div>
       
       {/* Song List - Full width at bottom */}
-      <div className="px-3 sm:px-6 mb-4">
+      <div className="px-3 sm:px-6 mb-2">
         <MusicPlayer />
       </div>
     </div>

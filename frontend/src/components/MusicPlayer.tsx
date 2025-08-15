@@ -115,7 +115,7 @@ const MusicPlayer: React.FC = () => {
           <img
             src={
               songDetails?.thumbnails?.[0]?.url ||
-              "https://via.placeholder.com/150"
+              "https://mynoota.com/_next/image?url=%2F_static%2Fimages%2F__default.png&w=640&q=75"
             }
             alt={songInfo?.name}
             className="w-12 h-12 rounded-md object-cover"
@@ -123,7 +123,7 @@ const MusicPlayer: React.FC = () => {
           {/* Song info */}
           <div className="flex flex-col">
             <span className="font-semibold truncate max-w-[200px]">
-              {songDetails?.name || "Loading..."}
+              {songDetails?.name || "Refresh or Select a Song"}
             </span>
             <span className="text-sm text-gray-400 truncate max-w-[200px]">
               {songInfo?.artist}
@@ -137,8 +137,8 @@ const MusicPlayer: React.FC = () => {
           className="bg-green-500 hover:bg-green-600 rounded-full p-3"
         >
           {isPlaying ? 
-          <img src={pauseButton} alt="Pause" />
-          : <img src={playButton} alt="Play" />}
+           <img src={playButton} alt="Play" />
+          :<img src={pauseButton} alt="Pause" />}
         </button>
       </div>
     </>

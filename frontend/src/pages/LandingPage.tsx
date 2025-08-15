@@ -76,7 +76,7 @@ const navigate = useNavigate();
             {/* Hero Section */}
             <div className="p-0 sm:p-4">
               <div
-                className="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat sm:gap-8 sm:rounded-xl items-center justify-center p-4"
+                className="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat sm:gap-8 rounded-xl items-center justify-center p-4"
                 style={{
                   backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuB7l9dzlN8E_yXTIVByv88M88xSs7wskIbtXyH0Log_1X38j4obuMNWWWnvR2Wgs9zDmKZd8-j8-cIL-VarKoEHba1L30CLGLGd-sAUxXsgfmkSvTPxFal5OiBffjf20lN_8-hZU8uDE6Ll_p6dwHitlZkjTTDBkGzIbAI2qHfEDoHHyKPkv8nXyK-gBewHwAFOybZZ0RNEPK2zE-JwDWfWpLczQ3fQDeHsuMi9piUDzzzylnqNxpDw6bqX2dzT6GVMZlPV4iwnydAD")`
                 }}

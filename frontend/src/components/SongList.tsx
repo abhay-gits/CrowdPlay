@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 import { useEffect } from 'react';
 import socket from '../socket/socket';
 import { useAuth } from '../contexts/authContext';
-
 
 const SongList: React.FC = () => {
   const { currentUser } = useAuth();
   const [songList, setSongList] = useState<any[] | null>([]);
 
-    useEffect(() => {
+  const handleTopSongs = useCallback((songList: any) => {
+    setSongList(songList);
+  }, []);
+
+  useEffect(() => {
     socket.emit('initialFetch')
-    const handleTopSongs = (songList:any) => {
-      setSongList(songList)
-      console.log("Top songs updated:", songList);
-    }
     socket.on('updateTopSongs', handleTopSongs)
     return () => {
       socket.off('updateTopSongs', handleTopSongs)
@@ -27,24 +26,14 @@ const SongList: React.FC = () => {
     socket.emit('upvote', {songId:id,userId:mail,songName:name})
   };
 
-/*     const handleUpvote = (songInfo:any) => {
-    const id =  songInfo.videoId;
-    const name = songInfo.name;
-    const mail = currentUser?.email;
-    socket.emit('upvote', {songId:id,userId:mail,songName:name})
-    console.log("Upvoted song:", songInfo);
-  }; */
-
   return (
-    <div className='flex flex-col '>
-      {/* <h2 className=" text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
-        Upcoming Songs
-      </h2> */}
-      <div className="px-4 py-3 border border-[#3b4754] min-h-[450px] bg-[#111418] rounded-xl">
-        <div className="overflow-hidden rounded-xl border border-[#3b4754] bg-[#111418]">
-          <table className="flex-1">
-            <thead>
-              <tr className="bg-[#1b2127]">
+    <div className='flex flex-col max-h-[60vh] min-h-[60vh]'>
+      {songList && songList.length > 0 ? (
+        <div className="px-4 py-3 min-h-[70vh] border border-[#3b4754]  bg-[#111418] rounded-xl">
+          <div className="overflow-hidden rounded-xl border border-[#3b4754] bg-[#111418]">
+            <table className="flex-1">
+              <thead>
+                <tr className="bg-[#1b2127]">
                 <th className="px-4 py-3 text-left text-white w-[400px] text-sm font-medium leading-normal">
                   Song
                 </th>
@@ -84,7 +73,11 @@ const SongList: React.FC = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      </div>) : (
+        <div className="px-4 py-3 border border-[#3b4754] bg-[#111418] rounded-xl">
+          <p className="text-white">No songs available, Please add some songs by searching and upvoting them.</p>
+        </div>
+      )}
     </div>
   );
 };
