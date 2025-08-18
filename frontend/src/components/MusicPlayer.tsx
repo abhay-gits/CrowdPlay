@@ -43,6 +43,8 @@ const MusicPlayer: React.FC = () => {
         playerVars: {
           autoplay: 1,
           controls: 0,
+          modestbranding: 1, 
+          iv_load_policy: 3,
         },
         events: {
           onReady: onPlayerReady,
