@@ -106,7 +106,7 @@ const MusicPlayer: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 p-4 shadow-lg>
+    <div className="fixed bottom-0 left-0 right-0 p-4 shadow-lg">
       {/* Hidden YouTube player */}
       <div id="hiddenPlayer" style={{ display: "none" }} />
 
