@@ -22,6 +22,7 @@ const Dashboard: React.FC = () => {
       <Header setSongInfo={setSongInfo} />
       
       {/* Main content area with responsive layout */}
+      <div className="text-white px-6 py-2 bg-red-500 m-auto rounded-md md:hidden">Open in Desktop for Best Experience...</div>
       <div className="gap-4 px-3 sm:px-6 flex flex-1 flex-col lg:flex-row justify-center py-5">
         
         {/* Left column - Music Player and Search Card */}

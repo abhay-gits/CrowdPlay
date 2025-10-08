@@ -106,7 +106,7 @@ const MusicPlayer: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="fixed bottom-0 left-0 right-0 p-4 shadow-lg>
       {/* Hidden YouTube player */}
       <div id="hiddenPlayer" style={{ display: "none" }} />
 
@@ -120,7 +120,7 @@ const MusicPlayer: React.FC = () => {
               "https://mynoota.com/_next/image?url=%2F_static%2Fimages%2F__default.png&w=640&q=75"
             }
             alt={songInfo?.name}
-            className="w-12 h-12 rounded-md object-cover"
+            className="w-10 h-10 rounded-lg object-cover"
           />
           {/* Song info */}
           <div className="flex flex-col">
@@ -143,7 +143,7 @@ const MusicPlayer: React.FC = () => {
           :<img src={pauseButton} alt="Pause" />}
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
